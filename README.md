@@ -10,7 +10,7 @@ The objective of this project is to develop a website similar to an Instagram pl
 - Sara Dohakhan / saradohakhan
 - Milan Patel / milanopatela
 - Saad Ahmed
-- Mustafa Amiri
+- Mustafa Amiri /40017384/ mouss54 / amiri.mustafa@gmail.com
 - Bahnan Danho
 
 # Technologies
