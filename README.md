@@ -5,10 +5,10 @@ The objective of this project is to develop a websitr similar to an Instagram pl
 
 # Project
 
-# Team Members
+# Team Members/github username
 - Farhan-Nabil Alamgir
 - Sara Dohakhan
-- Milan Patel
+- Milan Patel / milanopatela
 - Saad Ahmed
 - Mustafa Amiri
 - Bahnan Danho
