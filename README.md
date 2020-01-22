@@ -17,6 +17,6 @@ The objective of this project is to develop a websitr similar to an Instagram pl
 - Visual Studio
 - .NET
 - C#
-- mySQL
+- MySQL
 - Facebook
 - Slack
