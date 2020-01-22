@@ -14,3 +14,9 @@ The objective of this project is to develop a websitr similar to an Instagram pl
 - Bahnan Danho
 
 # Technologies
+- Visual Studio
+- .NET
+- C#
+- mySQL
+- Facebook
+- Slack
