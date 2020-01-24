@@ -20,3 +20,4 @@ The objective of this project is to develop a website similar to an Instagram pl
 - MySQL
 - Facebook
 - Slack
+- HTML/CSS
