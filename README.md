@@ -11,7 +11,7 @@ The objective of this project is to develop a website similar to an Instagram pl
 - Milan Patel / milanopatela
 - Saad Ahmed / zaad97
 - Mustafa Amiri /40017384/ mouss54 / amiri.mustafa@gmail.com
-- Bahnan Danho
+- Bahnan Danho / bibodanho
 
 # Technologies
 - Visual Studio
