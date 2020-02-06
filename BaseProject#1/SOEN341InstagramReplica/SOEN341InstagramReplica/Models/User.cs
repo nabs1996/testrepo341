@@ -11,6 +11,8 @@ namespace SOEN341InstagramReplica.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class User
     {
@@ -22,12 +24,23 @@ namespace SOEN341InstagramReplica.Models
             this.FollowLists1 = new HashSet<FollowList>();
             this.UserPosts = new HashSet<UserPost>();
         }
-    
+
         public int ID { get; set; }
+
+        [Required(ErrorMessage = "This field is required")]
         public string First_Name { get; set; }
+
+        [Required(ErrorMessage = "This field is required")]
         public string Last_Name { get; set; }
+
+        [Required(ErrorMessage = "This field is required")]
         public string Username { get; set; }
+
+        [Required(ErrorMessage = "This field is required")]
         public string Password { get; set; }
+
+        
+        [Required(ErrorMessage = "This field is required")]
         public string Email { get; set; }
         public Nullable<int> Age { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }

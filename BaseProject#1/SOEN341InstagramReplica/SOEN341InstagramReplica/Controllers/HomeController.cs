@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SOEN341InstagramReplica.Models;
 
 namespace SOEN341InstagramReplica.Controllers
 {
@@ -10,6 +11,28 @@ namespace SOEN341InstagramReplica.Controllers
     {
         public ActionResult Index()
         {
+            return View();
+        }
+
+        /*
+         * SignUp
+         * 
+         * 
+         */
+        public ActionResult SignUp()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(User model,string  returnUrl)
+        {
+            SOEN341Entities db = new SOEN341Entities();
+            db.Users.Add(model);
+            db.SaveChanges();
+            ModelState.Clear();
+            ViewBag.SuccessMessage = "Registration Successful";
+            return RedirectToAction("Index");
             return View();
         }
 
