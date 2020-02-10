@@ -37,6 +37,12 @@ namespace SOEN341InstagramReplica.Controllers
             return View();
         }
 
+        public ActionResult SignOut()
+        {
+            Session.Remove("username");
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

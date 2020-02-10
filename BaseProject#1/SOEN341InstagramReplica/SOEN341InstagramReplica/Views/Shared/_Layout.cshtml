@@ -33,9 +33,12 @@
                         {
                             <li><a href="@Url.Action("Index", "Home")">
                             @Session["username"]</a></li>
-                        }
-                    }
-                </ul>
+                            <li>
+                                <a href="@Url.Action("SignOut", "Home")">Sign Out</a>
+                            </li>
+                                }
+                                }
+</ul>
             </div>
         </div>
     </div>
