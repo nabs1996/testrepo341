@@ -27,7 +27,7 @@
                         Code below
                         This will check t=if the username has been saved in the session["username"]
                         and if there is, then a link to the user's profile will appear with their
-                        username as the visual
+                        username as the visual as well as the option to log out
                     -->
                         @if (Session["username"] != null)
                         {
@@ -36,8 +36,18 @@
                             <li>
                                 <a href="@Url.Action("SignOut", "Home")">Sign Out</a>
                             </li>
-                                }
-                                }
+
+                        }
+                        else/*This means that no one is logged in
+                            Meaning the user will have the option to either sign up and create
+                            an account or login to an existing one
+                            */
+                        {
+                            <li><a href="@Url.Action("SignUp", "Home")">Sign Up</a></li>
+                            //Placeholder until login functionality ready
+                            <li>Login</li>
+                        }
+                    }
 </ul>
             </div>
         </div>
