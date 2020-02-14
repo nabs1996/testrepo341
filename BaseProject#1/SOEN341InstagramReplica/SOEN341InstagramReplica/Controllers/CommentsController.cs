@@ -36,15 +36,18 @@ namespace SOEN341InstagramReplica.Controllers
             return View(comment);
         }
 
-        // GET: Comments/Create
-        public ActionResult Create()
+        // GET: Comments/Create/1
+        public ActionResult Create(int? id)
         {
+            if (Session["username"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.ID = id;
             ViewBag.Post_ID = new SelectList(db.UserPosts, "ID", "Title");
             ViewBag.User_ID = new SelectList(db.Users, "ID", "First_Name");
             return View();
         }
-
-  
 
         // POST: Comments/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -53,6 +56,7 @@ namespace SOEN341InstagramReplica.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Comment1,Date_Posted,User_ID,Post_ID")] Comment comment)
         {
+
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);
