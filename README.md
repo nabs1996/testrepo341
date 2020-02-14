@@ -19,6 +19,4 @@ This web application's main function allows users to post pictures and videos th
 - .NET
 - C#
 - MySQL
-- Facebook
-- Slack
 - HTML/CSS
