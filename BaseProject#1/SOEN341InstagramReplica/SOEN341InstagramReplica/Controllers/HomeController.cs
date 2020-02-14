@@ -32,6 +32,7 @@ namespace SOEN341InstagramReplica.Controllers
             db.SaveChanges();
             ModelState.Clear();
             ViewBag.SuccessMessage = "Registration Successful";
+            Session["id"] = model.ID;
             Session["username"] = model.First_Name;
             return RedirectToAction("Index");
             return View();
@@ -39,7 +40,8 @@ namespace SOEN341InstagramReplica.Controllers
 
         public ActionResult SignOut()
         {
-            Session.Remove("username");
+            //Session.Remove("username");
+            Session.RemoveAll();
             return RedirectToAction("Index", "Home");
         }
 

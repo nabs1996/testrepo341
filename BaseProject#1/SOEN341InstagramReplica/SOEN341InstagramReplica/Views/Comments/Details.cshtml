@@ -1,0 +1,50 @@
+﻿@model SOEN341InstagramReplica.Models.Comment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Posted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Posted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPost.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPost.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.First_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.First_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
