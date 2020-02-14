@@ -7,27 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SOEN341InstagramReplica.Models
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+
+public partial class SOEN341Entities : DbContext
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    
-    public partial class SOEN341Entities : DbContext
+    public SOEN341Entities()
+        : base("name=SOEN341Entities")
     {
-        public SOEN341Entities()
-            : base("name=SOEN341Entities")
-        {
-        }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
-        public virtual DbSet<Comment> Comments { get; set; }
-        public virtual DbSet<FollowList> FollowLists { get; set; }
-        public virtual DbSet<UserPost> UserPosts { get; set; }
-        public virtual DbSet<User> Users { get; set; }
     }
+
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+        throw new UnintentionalCodeFirstException();
+    }
+
+    public virtual DbSet<Comment> Comments { get; set; }
+    public virtual DbSet<FollowList> FollowLists { get; set; }
+    public virtual DbSet<UserPost> UserPosts { get; set; }
+    public virtual DbSet<User> Users { get; set; }
 }

@@ -25,11 +25,10 @@ namespace SOEN341InstagramReplica.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignUp(User model,string  returnUrl)
+        public ActionResult SignUp(User model, string returnUrl)
         {
             SOEN341Entities db = new SOEN341Entities();
-            db.Users.Add(model);
-            db.SaveChanges();
+
             ModelState.Clear();
             ViewBag.SuccessMessage = "Registration Successful";
             Session["username"] = model.First_Name;
@@ -55,6 +54,28 @@ namespace SOEN341InstagramReplica.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Login()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(User model, string returnUrl)
+        {
+            SOEN341Entities db = new SOEN341Entities();
+            string pass = (from x in db.Users where x.Username == model.Username select x.Password).ToString();
+            if (pass == model.Password)
+            {
+                Session["username"] = model.Username;
+                Session["id"] = (from x in db.Users where x.Username == model.Username select x.ID);
+                //return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+
         }
     }
 }
