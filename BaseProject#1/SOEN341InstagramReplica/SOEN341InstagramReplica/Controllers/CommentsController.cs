@@ -39,11 +39,13 @@ namespace SOEN341InstagramReplica.Controllers
         // GET: Comments/Create/1
         public ActionResult Create(int? id)
         {
+            
             if (Session["username"] == null)
             {
                 return RedirectToAction("Index", "Home");
             }
             ViewBag.ID = id;
+            Session["currentPost"] = id;
             ViewBag.Post_ID = new SelectList(db.UserPosts, "ID", "Title");
             ViewBag.User_ID = new SelectList(db.Users, "ID", "First_Name");
             return View();
@@ -54,18 +56,16 @@ namespace SOEN341InstagramReplica.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Comment1,Date_Posted,User_ID,Post_ID")] Comment comment)
+        public ActionResult Create([Bind(Include = "ID,Comment1,User_ID,Post_ID")] Comment comment)
         {
-
+            comment.User_ID = (int) Session["id"];
+            comment.Post_ID = (int)Session["currentPost"];
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details2", "UserPosts", new { id = comment.Post_ID });
             }
-
-            ViewBag.Post_ID = new SelectList(db.UserPosts, "ID", "Title", comment.Post_ID);
-            ViewBag.User_ID = new SelectList(db.Users, "ID", "First_Name", comment.User_ID);
             return View(comment);
         }
 
