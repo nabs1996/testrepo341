@@ -46,13 +46,6 @@ namespace SOEN341InstagramReplica.Controllers
                 Session["id"] = userId;
                 return RedirectToAction("Index");
              }
-
-
-            
-
-
-            
-
         }
 
 

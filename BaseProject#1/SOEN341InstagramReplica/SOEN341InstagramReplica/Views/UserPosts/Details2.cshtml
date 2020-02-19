@@ -7,17 +7,24 @@
 <h2>Post</h2>
 <h1>@ViewBag.userPost.Title</h1>
 <p></p>
-<p>Create new comment</p>
-@Html.ActionLink("Create New Comment", "Create", "Comments", null, new { id = ViewBag.userPost.ID })
 
-<p>--</p>
-<p></p>
-<p>Comments</p>
-@foreach (var comment in ViewBag.Comments)
-{
-    <h1>@comment.Comment1</h1>
-    //<h1>@comment.Comment</h1>
-    //<h1>@comment.User_ID</h1>
-}
+@Html.ActionLink("Create New Comment", "Create", "Comments",  new { id = ViewBag.userPost.ID }, null)
 
 
+
+    <table class="table">
+        <tr>
+            <th>
+                Comment
+            </th>
+            <th>
+                User
+            </th>
+        </tr>
+        @foreach (var comment in ViewBag.Comments) { 
+    <tr>
+        <td>@comment.Comment1</td>
+        <td>@comment.User_ID</td>
+        </tr>
+        }
+     </table>
