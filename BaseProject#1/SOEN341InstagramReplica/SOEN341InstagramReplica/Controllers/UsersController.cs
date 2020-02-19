@@ -12,6 +12,7 @@ namespace SOEN341InstagramReplica.Controllers
 {
     public class UsersController : Controller
     {
+        private SOEN341Entities db = new SOEN341Entities();
 
         // GET: Users
         public ActionResult Index()
