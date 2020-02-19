@@ -8,8 +8,8 @@
 <h1>@ViewBag.userPost.Title</h1>
 <p></p>
 <p>Create new comment</p>
-@Html.ActionLink("Create New", "Create", "Comments", null, new { id = ViewBag.userPost.ID })
-@Html.ActionLink("Create New", "Create", new { id = ViewBag.userPost.ID })
+@Html.ActionLink("Create New Comment", "Create", "Comments", null, new { id = ViewBag.userPost.ID })
+
 <p>--</p>
 <p></p>
 <p>Comments</p>

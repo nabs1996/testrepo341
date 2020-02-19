@@ -1,13 +1,13 @@
 ﻿@model SOEN341InstagramReplica.Models.User
 
 @{
-    ViewBag.Title = "SignUp";
+    ViewBag.Title = "Create";
 }
 
-<h2>SignUp</h2>
+<h2>Create</h2>
 
 
-@using (Html.BeginForm("SignUp", "Home", new { returnUrl = Request.QueryString["ReturnUrl"]}, FormMethod.Post))
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
@@ -78,7 +78,6 @@
                 @Html.ValidationMessageFor(model => model.Date_Joined, "", new { @class = "text-danger" })
             </div>
         </div>
-
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
