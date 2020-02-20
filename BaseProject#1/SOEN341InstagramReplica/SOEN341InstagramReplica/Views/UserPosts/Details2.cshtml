@@ -6,13 +6,14 @@
 
 <h2>Post</h2>
 <h1>@ViewBag.userPost.Title</h1>
-<p></p>
+<h1>@Html.ActionLink("UserNamePlaceHolder", "Details", "Users", new { id = ViewBag.userPost.User_ID }, null)</h1>
+<p>-----</p>
 
 @Html.ActionLink("Create New Comment", "Create", "Comments",  new { id = ViewBag.userPost.ID }, null)
 
 
 
-    <table class="table">
+<table class="table">
         <tr>
             <th>
                 Comment
@@ -27,4 +28,4 @@
         <td>@comment.User_ID</td>
         </tr>
         }
-     </table>
+</table>
