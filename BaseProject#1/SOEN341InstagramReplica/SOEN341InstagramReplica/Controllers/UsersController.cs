@@ -35,6 +35,26 @@ namespace SOEN341InstagramReplica.Controllers
             return View(user);
         }
 
+        // GET: Users/Details/5
+        public ActionResult Details2(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UserAndPosts user = new UserAndPosts();
+            user.user = db.Users.Find(id);
+            user.posts = (from x in db.UserPosts where x.User_ID == id select x).ToList();
+
+            //UserPost posts = (List<UserPost>)(from x1 in db.UserPosts x1.User_ID == id select x1).ToList();
+
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+
         // GET: Users/Create
         public ActionResult Create()
         {

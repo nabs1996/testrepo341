@@ -1,0 +1,48 @@
+﻿@using SOEN341InstagramReplica.Models;
+@model UserAndPosts
+
+@{
+    ViewBag.Title = "Details2";
+}
+
+<h2>Details2User</h2>
+@if (Session["username"] != null && Session["username"].ToString() != Model.user.Username)
+{
+    <p>Placeholder for following</p>
+
+}
+
+<p>@Model.user.Username</p>
+<p></p>
+@if (Session["username"] != null && Session["username"].ToString() == Model.user.Username)
+{
+<p>@Html.ActionLink("Delete my account", "Delete", new { id = Model.user.ID })</p>
+
+}
+<p></p>
+<p>MyPosts</p>
+<table class="table">
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            POST
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var post in Model.posts)
+    {
+    <tr>
+        <td>@Html.ActionLink(post.Title, "Details2", "UserPosts", new { id = post.ID }, null)</td>
+        <td>@post.POST</td>
+        @if (Session["username"] != null && Session["username"].ToString() == Model.user.Username)
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", "UserPosts", new { id = post.ID }, null) |
+                @Html.ActionLink("Delete", "Delete", "UserPosts", new { id = post.ID }, null)
+            </td>
+        }
+    </tr>
+    }
+</table>
