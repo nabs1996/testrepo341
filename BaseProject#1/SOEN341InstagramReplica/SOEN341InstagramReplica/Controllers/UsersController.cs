@@ -45,8 +45,36 @@ namespace SOEN341InstagramReplica.Controllers
             UserAndPosts user = new UserAndPosts();
             user.user = db.Users.Find(id);
             user.posts = (from x in db.UserPosts where x.User_ID == id select x).ToList();
+            
+            /*
+             * There are several situations when it comes to being able to follow
+             * and see if you are already following. We also have to consider whether
+             * a user is viewing their own page in which case the option to follow
+             * or unfollow shouldn't appear as a user can't follow themseves
+             */
 
-            //UserPost posts = (List<UserPost>)(from x1 in db.UserPosts x1.User_ID == id select x1).ToList();
+            //No one is logged in or user is viewing themselves
+            if(Session["username"] == null || 
+               Session["username"].ToString() == user.user.Username)
+            {
+                user.following = "invalid";
+            }
+            //User is viewing another profile and is logged in
+            else
+            {
+                int sessionID = (int) Session["id"];
+                //string following = db.FollowLists.Where(x => (x.FolloweeID == id) && (x.FollowerID == sessionID)).Select(x => x.ID).FirstOrDefault().ToString() ?? "Invalid";
+                if ((db.FollowLists.Where(x => (x.FolloweeID == id) && (x.FollowerID == sessionID)).Select(x => x.ID).FirstOrDefault().ToString() ?? "Invalid") != "Invalid")
+                {
+                    //There is a following between current user and profile of the user they are o
+                    user.following = "following";
+                }
+                else
+                {
+                    //They are not following the user profile they are currently on
+                    user.following = "unfollowing";
+                }
+            }
 
             if (user == null)
             {
