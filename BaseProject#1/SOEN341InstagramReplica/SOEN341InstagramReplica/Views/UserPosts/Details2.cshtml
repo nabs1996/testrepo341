@@ -1,0 +1,31 @@
+﻿@using SOEN341InstagramReplica.Models
+
+@{
+    ViewBag.Title = "Details2";
+}
+
+<h2>Post</h2>
+<h1>@ViewBag.userPost.Title</h1>
+<h1>@Html.ActionLink("UserNamePlaceHolder", "Details", "Users", new { id = ViewBag.userPost.User_ID }, null)</h1>
+<p>-----</p>
+
+@Html.ActionLink("Create New Comment", "Create", "Comments",  new { id = ViewBag.userPost.ID }, null)
+
+
+
+<table class="table">
+        <tr>
+            <th>
+                Comment
+            </th>
+            <th>
+                User
+            </th>
+        </tr>
+        @foreach (var comment in ViewBag.Comments) { 
+    <tr>
+        <td>@comment.Comment1</td>
+        <td>@comment.User_ID</td>
+        </tr>
+        }
+</table>
