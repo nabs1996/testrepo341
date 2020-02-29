@@ -5,13 +5,41 @@
     ViewBag.Title = "Details2";
 }
 <script>
+    function followOrUnfollow() {
+        alert('o');
+        alert(document.getElementById('followOrUnfollowButton').value);
+        if (document.getElementById('followOrUnfollowButton').value == "Follow") {
 
+            //Following, which means now they want to unfollow
+            $.post('@Url.Action("FollowOrUnfollowUser", "Users")',
+                { "newFollowStatus": 1, "loggedInUser": @Session["id"], "userProfile": @Model.user.ID}).done
+                (function () {
+                    document.getElementById('followOrUnfollowButton').value = "Unfollow";
+                });
+        } else 
+        {
+            //Not following, which means now they want to follow
+            $.post('@Url.Action("FollowOrUnfollowUser", "Users")',
+                { "newFollowStatus": 0, "loggedInUser": @Session["id"], "userProfile": @Model.user.ID}).done
+                (function () {
+                    document.getElementById('followOrUnfollowButton').value = "Follow";
+                });
+        }
+        
+    }
 
 </script>
 <h2>Details2User</h2>
 @if (Session["username"] != null && Session["username"].ToString() != Model.user.Username)
 {
-    <p>Placeholder for following</p>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="followOrUnfollowButton"
+                       value="@Model.following.ToString()" class="btn btn-default" onclick="followOrUnfollow()" />
+            </div>
+        </div>
+
 
 }
 
