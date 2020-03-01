@@ -74,11 +74,16 @@ namespace SOEN341InstagramReplica.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Title,Description,POST,Rating,Date_Posted,User_ID")] UserPost userPost)
+        public ActionResult Create([Bind(Include = "ID,Title,Description,POST,Rating,Date_Posted,User_ID")] UserPost userPost, HttpPostedFileBase image)
         {
             userPost.User_ID = (int) Session["id"];
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    userPost.POST = new byte[image.ContentLength];
+                    image.InputStream.Read(userPost.POST, 0, image.ContentLength);
+                }
                 db.UserPosts.Add(userPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
