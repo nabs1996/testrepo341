@@ -25,7 +25,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="POST" Type="varbinary(max)" />
+    <Property Name="POST" Type="varbinary(max)" Nullable="false" />
     <Property Name="Rating" Type="int" />
     <Property Name="Date_Posted" Type="datetime" />
     <Property Name="User_ID" Type="int" Nullable="false" />
@@ -45,7 +45,7 @@
     <Property Name="Date_Joined" Type="date" />
     <Property Name="Role" Type="varchar" MaxLength="100" />
   </EntityType>
-  <Association Name="FK__Comments__Post_I__33D4B598">
+  <Association Name="FK__Comments__Post_I__17F790F9">
     <End Role="UserPosts" Type="Self.UserPosts" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -59,7 +59,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Comments__User_I__32E0915F">
+  <Association Name="FK__Comments__User_I__01142BA1">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
     <ReferentialConstraint>
@@ -71,7 +71,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__FollowLis__Follo__2E1BDC42">
+  <Association Name="FK__FollowLis__Follo__04E4BC85">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="FollowList" Type="Self.FollowList" Multiplicity="*" />
     <ReferentialConstraint>
@@ -83,7 +83,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__FollowLis__Follo__2F10007B">
+  <Association Name="FK__FollowLis__Follo__05D8E0BE">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="FollowList" Type="Self.FollowList" Multiplicity="*" />
     <ReferentialConstraint>
@@ -95,7 +95,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserPosts__User___2B3F6F97">
+  <Association Name="FK__UserPosts__User___18EBB532">
     <End Role="Users" Type="Self.Users" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
@@ -114,23 +114,23 @@
     <EntitySet Name="FollowList" EntityType="Self.FollowList" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserPosts" EntityType="Self.UserPosts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Comments__Post_I__33D4B598" Association="Self.FK__Comments__Post_I__33D4B598">
+    <AssociationSet Name="FK__Comments__Post_I__17F790F9" Association="Self.FK__Comments__Post_I__17F790F9">
       <End Role="UserPosts" EntitySet="UserPosts" />
       <End Role="Comments" EntitySet="Comments" />
     </AssociationSet>
-    <AssociationSet Name="FK__Comments__User_I__32E0915F" Association="Self.FK__Comments__User_I__32E0915F">
+    <AssociationSet Name="FK__Comments__User_I__01142BA1" Association="Self.FK__Comments__User_I__01142BA1">
       <End Role="Users" EntitySet="Users" />
       <End Role="Comments" EntitySet="Comments" />
     </AssociationSet>
-    <AssociationSet Name="FK__FollowLis__Follo__2E1BDC42" Association="Self.FK__FollowLis__Follo__2E1BDC42">
+    <AssociationSet Name="FK__FollowLis__Follo__04E4BC85" Association="Self.FK__FollowLis__Follo__04E4BC85">
       <End Role="Users" EntitySet="Users" />
       <End Role="FollowList" EntitySet="FollowList" />
     </AssociationSet>
-    <AssociationSet Name="FK__FollowLis__Follo__2F10007B" Association="Self.FK__FollowLis__Follo__2F10007B">
+    <AssociationSet Name="FK__FollowLis__Follo__05D8E0BE" Association="Self.FK__FollowLis__Follo__05D8E0BE">
       <End Role="Users" EntitySet="Users" />
       <End Role="FollowList" EntitySet="FollowList" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserPosts__User___2B3F6F97" Association="Self.FK__UserPosts__User___2B3F6F97">
+    <AssociationSet Name="FK__UserPosts__User___18EBB532" Association="Self.FK__UserPosts__User___18EBB532">
       <End Role="Users" EntitySet="Users" />
       <End Role="UserPosts" EntitySet="UserPosts" />
     </AssociationSet>
