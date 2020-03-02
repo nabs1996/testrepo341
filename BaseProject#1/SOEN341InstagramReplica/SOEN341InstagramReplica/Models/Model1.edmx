@@ -172,7 +172,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="POST" Type="Binary" Nullable="false" />
+          <Property Name="POST" Type="Binary" FixedLength="false" MaxLength="Max" Nullable="false" />
           <Property Name="Rating" Type="Int32" />
           <Property Name="Date_Posted" Type="DateTime" Precision="3" />
           <Property Name="User_ID" Type="Int32" Nullable="false" />
