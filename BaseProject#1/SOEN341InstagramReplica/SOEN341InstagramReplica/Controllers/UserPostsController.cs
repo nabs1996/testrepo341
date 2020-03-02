@@ -86,7 +86,7 @@ namespace SOEN341InstagramReplica.Controllers
                 }
                 db.UserPosts.Add(userPost);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details2", "Users", new { id = Session["id"]});
             }
 
             ViewBag.User_ID = new SelectList(db.Users, "ID", "First_Name", userPost.User_ID);

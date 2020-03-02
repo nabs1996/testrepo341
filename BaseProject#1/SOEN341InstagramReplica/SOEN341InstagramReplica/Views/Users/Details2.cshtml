@@ -16,7 +16,7 @@
                 (function () {
                     document.getElementById('followOrUnfollowButton').value = "Unfollow";
                 });
-        } else 
+        } else
         {
             //Not following, which means now they want to follow
             $.post('@Url.Action("FollowOrUnfollowUser", "Users")',
@@ -25,32 +25,35 @@
                     document.getElementById('followOrUnfollowButton').value = "Follow";
                 });
         }
-        
+
     }
 
 </script>
-<h2>Details2User</h2>
+<h2>@Model.user.Username</h2>
+
 @if (Session["username"] != null && Session["username"].ToString() != Model.user.Username)
 {
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="button" id="followOrUnfollowButton"
-                       value="@Model.following.ToString()" class="btn btn-default" onclick="followOrUnfollow()" />
-            </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" id="followOrUnfollowButton"
+                   value="@Model.following.ToString()" class="btn btn-default" onclick="followOrUnfollow()" />
         </div>
+    </div>
 
 
 }
 
-<p>@Model.user.Username</p>
 <p></p>
 @if (Session["username"] != null && Session["username"].ToString() == Model.user.Username)
 {
-<p>@Html.ActionLink("Delete my account", "Delete", new { id = Model.user.ID })</p>
+    <p>@Html.ActionLink("Delete my account", "Delete", new { id = Model.user.ID })</p>
 
 }
 <p></p>
+<p>
+    @Html.ActionLink("Create New Post", "Create", "UserPosts")
+</p>
 <p>MyPosts</p>
 <table class="table">
     <tr>
@@ -64,16 +67,23 @@
     </tr>
     @foreach (var post in Model.posts)
     {
-    <tr>
-        <td>@Html.ActionLink(post.Title, "Details2", "UserPosts", new { id = post.ID }, null)</td>
-        <td>@post.POST</td>
-        @if (Session["username"] != null && Session["username"].ToString() == Model.user.Username)
-        {
+        <tr>
+            <td>@Html.ActionLink(post.Title, "Details2", "UserPosts", new { id = post.ID }, null)</td>
             <td>
-                @Html.ActionLink("Edit", "Edit", "UserPosts", new { id = post.ID }, null) |
-                @Html.ActionLink("Delete", "Delete", "UserPosts", new { id = post.ID }, null)
+                @{
+                    var base64 = Convert.ToBase64String(post.POST);
+                    var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+                }
+
+                <img src='@imgsrc' style="max-width:50px;max-height:50px" />
             </td>
-        }
-    </tr>
+            @if (Session["username"] != null && Session["username"].ToString() == Model.user.Username)
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "UserPosts", new { id = post.ID }, null) |
+                    @Html.ActionLink("Delete", "Delete", "UserPosts", new { id = post.ID }, null)
+                </td>
+            }
+        </tr>
     }
 </table>

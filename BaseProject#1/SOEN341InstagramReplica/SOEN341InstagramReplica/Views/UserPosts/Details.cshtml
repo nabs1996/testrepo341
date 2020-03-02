@@ -32,7 +32,12 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.POST)
+            @{ 
+                var base64 = Convert.ToBase64String(Model.POST);
+                var imgsrc = string.Format("data:image/png;base64,{0}", base64);
+            }
+
+            <img src='@imgsrc' style="max-width:50px;max-height:50px" />
         </dd>
 
         <dt>

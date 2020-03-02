@@ -7,8 +7,7 @@ CREATE TABLE [dbo].[Users] (
 	[Email]			VARCHAR (100)		NOT NULL UNIQUE,
     [Age]			INT					NULL,
     [DOB]			DATE				NULL, /* Date of birth */
-	[Date_Joined]	DATE DEFAULT GETDATE(),
-	[Role]			VARCHAR (100)		NOT NULL
+	[Date_Joined]	DATE DEFAULT GETDATE()
 );
 
 CREATE TABLE [dbo].[UserPosts](
