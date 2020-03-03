@@ -35,6 +35,7 @@
             @Html.LabelFor(model => model.POST, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" name="image" id="image" />
+                @Html.ValidationMessageFor(model => model.POST, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">

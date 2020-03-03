@@ -33,15 +33,8 @@
 
 @if (Session["username"] != null && Session["username"].ToString() != Model.user.Username)
 {
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="button" id="followOrUnfollowButton"
-                   value="@Model.following.ToString()" class="btn btn-default" onclick="followOrUnfollow()" />
-        </div>
-    </div>
-
-
+  <input type="button" id="followOrUnfollowButton"
+     value="@Model.following.ToString()" class="btn btn-default" onclick="followOrUnfollow()" />
 }
 
 <p></p>
@@ -49,11 +42,12 @@
 {
     <p>@Html.ActionLink("Delete my account", "Delete", new { id = Model.user.ID })</p>
 
+
+    <p></p>
+    <p>
+        @Html.ActionLink("Create New Post", "Create", "UserPosts")
+    </p>
 }
-<p></p>
-<p>
-    @Html.ActionLink("Create New Post", "Create", "UserPosts")
-</p>
 <p>MyPosts</p>
 <table class="table">
     <tr>

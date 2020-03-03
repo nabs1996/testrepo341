@@ -56,10 +56,11 @@ namespace SOEN341InstagramReplica.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Comment1,User_ID,Post_ID")] Comment comment)
+        public ActionResult Create([Bind(Include = "ID,Comment1,User_ID,Username,Post_ID")] Comment comment)
         {
             comment.User_ID = (int) Session["id"];
             comment.Post_ID = (int)Session["currentPost"];
+            comment.Username = Session["username"].ToString();
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);

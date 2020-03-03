@@ -43,7 +43,6 @@ namespace SOEN341InstagramReplica.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UserAndPosts user = new UserAndPosts();
-            User temp = db.Users.Find(id);
             user.user = db.Users.Find(id);
             user.posts = (from x in db.UserPosts where x.User_ID == id select x).ToList();
             
